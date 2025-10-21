@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StatsSection from './components/StatsSection';
@@ -8,36 +10,60 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import './styles/main.css';
+import AdminDashboard from './components/DashBoards/Admin Dashboard';
+import TeacherDashboard from './components/DashBoards/Teacher Dashboard';
+import apiService from './services/authService';
+import OfferingsPage from './Pages/Offerings';
 
 const App = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // Smooth scrolling for anchor links
-    const handleAnchorClick = (e) => {
-      const href = e.target.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-    
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+    // Fetch JSON file from public folder
+    fetch('/data/Book.json')
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error loading JSON:', err);
+        setLoading(false);
+      });
   }, []);
-  
+
+  if (loading) return <Loader />;
+
+  // Home Page Component
+  const HomePage = () => (
+    <>
+      <HeroSection data={data.hero} />
+      <StatsSection data={data.stats} />
+      <FeaturesSection data={data.features} />
+      <FacultiesSection data={data.faculties} />
+      <AboutSection data={data.about} />
+      <ContactSection data={data.contact} />
+    </>
+  );
+
   return (
-    <div className="App">
-      <Navbar />
-      <HeroSection />
-      <StatsSection />
-      <FeaturesSection />
-      <FacultiesSection />
-      <AboutSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    
+      <div className="App">
+        <Navbar />
+        <Routes>
+          {/* Home Route */}
+          <Route path="/" element={<HomePage />} />
+          
+          {/* Offerings Route */}
+          <Route path="Pages/offerings" element={<OfferingsPage />} />
+
+          {/* Redirect unknown routes to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+      </div>
+    
   );
 };
 

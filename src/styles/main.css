@@ -1,5 +1,14 @@
+/* ========================================
+   COMPLETE RESPONSIVE CSS
+   Base + Mobile Optimizations
+   ======================================== */
+
 @import './animations.css';
-@import './responsive.css';
+@import "tailwindcss";
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 * {
   margin: 0;
@@ -26,13 +35,17 @@ body {
   padding: 0 20px;
 }
 
-/* Navbar Styles */
+/* ========================================
+   NAVBAR - DESKTOP
+   ======================================== */
+
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 80px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(254, 254, 253, 0.1);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,6 +58,7 @@ body {
 
 .navbar-container {
   max-width: 1400px;
+  background-color: rgba(254, 253, 251, 0.1);
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
@@ -66,7 +80,7 @@ body {
 .logo-circle {
   width: 45px;
   height: 45px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #56e6ed 0%, #6788f6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -84,14 +98,21 @@ body {
   animation: logoInnerSpin 4s linear infinite;
 }
 
+.logo-img {
+  width: 50px;
+  height: auto;
+  display: block;
+}
+
 .website-name {
-  font-size: 26px;
+  font-size: 46px;
   font-weight: 700;
-  background: linear-gradient(135deg, #1be4fa, #4ba272);
+  background: linear-gradient(135deg, #fdffff, #fffeff);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
+  -webkit-text-stroke: 1px black;
 }
 
 .navbar-menu {
@@ -123,7 +144,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #6ed7f4, #678ef1);
   transition: left 0.3s ease;
   z-index: 1;
 }
@@ -135,13 +156,15 @@ body {
 
 .navbar-link:hover span,
 .navbar-link.active span {
-  color: white;
+  color: rgb(249, 231, 70);
 }
 
 .mobile-menu-btn {
   display: none;
   cursor: pointer;
   padding: 5px;
+  background: none;
+  border: none;
 }
 
 .hamburger {
@@ -180,7 +203,10 @@ body {
   margin-bottom: -1.5px;
 }
 
-/* Hero Section */
+/* ========================================
+   HERO SECTION - DESKTOP
+   ======================================== */
+
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -207,7 +233,7 @@ body {
 
 .particle {
   position: absolute;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #66c7ea, #7095f2);
   border-radius: 50%;
   opacity: 0.1;
   animation: float 6s ease-in-out infinite;
@@ -267,19 +293,16 @@ body {
   line-height: 1.1;
   margin-bottom: 24px;
   color: #fefdfd;
-
-  /* Add black border/outline */
   text-shadow:
-    -2px -2px 0 #000,  
+    -2px -2px 0 #3bd2cb,  
      2px -2px 0 #000,
     -2px  2px 0 #000,
-     2px  2px 0 #000;
+     2px  2px 0 #ee1010;
 }
-
 
 .title-line {
   display: block;
-  color:#e2e8f0
+  color: #e2e8f0;
 }
 
 .gradient-text {
@@ -295,12 +318,11 @@ body {
   color: #fafbfd;
   margin-bottom: 40px;
   max-width: 500px;
-  
   text-shadow:
-    -2px -2px 0 #000,  
-     2px -2px 0 #000,
-    -2px  2px 0 #000,
-     2px  2px 0 #000;
+    -2px -2px 0 #011000,  
+     2px -2px 0 #6be67e,
+    -2px  2px 0 #010900,
+     2px  2px 0 #000300;
 }
 
 .hero-buttons {
@@ -325,7 +347,7 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #66d2ea, #6e9bee);
   color: white;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
@@ -385,6 +407,12 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
+.hero-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
 .card-content h3 {
   font-size: 1.5rem;
   color: #1a1a1a;
@@ -415,6 +443,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .float-element {
@@ -462,10 +491,44 @@ body {
   animation: scroll-wheel 2s ease-in-out infinite;
 }
 
-/* Stats Section */
+/* Slideshow */
+.slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slideshow-track {
+  display: flex;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ========================================
+   STATS SECTION
+   ======================================== */
+
 .stats-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #09d1e7 0%, #91a3f6 100%);
   position: relative;
   overflow: hidden;
 }
@@ -542,16 +605,21 @@ body {
   opacity: 1;
 }
 
-/* Features Section */
+/* ========================================
+   FEATURES SECTION
+   ======================================== */
+
 .features-section {
   padding: 120px 0;
   background: #ffffff;
   position: relative;
 }
 
-.section-header {
+.section-header h2,
+.section-header h1,
+.section-header p {
   text-align: center;
-  margin-bottom: 80px;
+  margin: 0 auto;
 }
 
 .section-header.animate .section-badge {
@@ -581,7 +649,7 @@ body {
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: 3rem;  
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 20px;
@@ -599,6 +667,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
+  margin-top: 60px;
 }
 
 .feature-card {
@@ -689,14 +758,209 @@ body {
   animation: ripple 1s ease-out;
 }
 
-/* Faculties Section */
+/* ========================================
+   FACULTIES SECTION
+   ======================================== */
+
 .faculties-section {
   padding: 120px 0;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   position: relative;
 }
 
-/* About Section */
+.faculty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.faculty-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faculty-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.faculty-card-content {
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.faculty-image-wrapper {
+  flex-shrink: 0;
+}
+
+.faculty-image {
+  width: 128px;
+  height: 128px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.faculty-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.faculty-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.faculty-name-section {
+  flex: 1;
+}
+
+.faculty-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.faculty-designation {
+  color: #2563eb;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.faculty-specialization {
+  color: #6b7280;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.faculty-experience-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #dbeafe;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.faculty-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.graduates-badge {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.graduates-badge strong {
+  font-weight: 700;
+}
+
+.achievement-badge {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+.faculty-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.contact-link:hover {
+  color: #2563eb;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.faculty-cta {
+  margin-top: 64px;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  border-radius: 16px;
+  padding: 48px 32px;
+  text-align: center;
+  color: white;
+}
+
+.cta-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.cta-subtitle {
+  font-size: 18px;
+  margin: 0 0 24px 0;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: white;
+  color: #2563eb;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.cta-button:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+
 .about-section {
   padding: 120px 0;
   background: #ffffff;
@@ -730,10 +994,19 @@ body {
   margin-bottom: 20px;
 }
 
-/* Contact Section */
+.visual-placeholder img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
+
 .contact-section {
   padding: 120px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #39c8eb 0%, #769df1 100%);
   color: white;
   position: relative;
 }
@@ -767,7 +1040,6 @@ body {
   animation: slideInRight 1s ease-out 0.4s both;
 }
 
-/* Content Placeholders */
 .content-placeholder {
   padding: 40px;
 }
@@ -819,7 +1091,10 @@ body {
   padding-left: 20px;
 }
 
-/* Footer */
+/* ========================================
+   FOOTER
+   ======================================== */
+
 .footer {
   background: #1a1a1a;
   color: white;
@@ -860,45 +1135,679 @@ body {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.hero {
-  height: 100vh; /* full screen height */
-  background-image: url('/images/hero-bg.jpg'); /* place your image in public/images folder */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-.slideshow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1; /* behind content */
-}
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
 
-.slideshow-track {
-  display: flex;
-  height: 100%;
-  transition: transform 1s ease-in-out;
+/* Large Desktop (1400px+) - Already handled in base styles */
+
+/* Desktop to Tablet (1024px - 1399px) */
+@media (max-width: 1399px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-container {
+    gap: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.8rem;
+  }
 }
 
-.slide {
-  flex: 0 0 100%;
-  height: 100%;
-  position: relative;
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  /* Navbar adjustments */
+  .navbar-container {
+    padding: 0 15px;
+  }
+  
+  /* Hero Section - Stack layout */
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 100px 20px 40px;
+  }
+  
+  .hero-visual {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hero-content {
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto 30px;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  /* Features grid 2 columns */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  /* About section stack */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  /* Contact section stack */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  /* Stats 3 columns */
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.slide-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;      /* keep aspect ratio */
-  background-position: center; /* center the image */
-  background-repeat: no-repeat;
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Navbar Mobile */
+  .navbar {
+    height: 70px;
+  }
+  
+  .navbar-container {
+    height: 70px;
+    padding: 0 15px;
+  }
+  
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-inner {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .logo-img {
+    width: 40px;
+  }
+  
+  .website-name {
+    font-size: 22px;
+    -webkit-text-stroke: 0.8px black;
+  }
+  
+  /* Mobile Menu Toggle */
+  .mobile-menu-btn {
+    display: block;
+    z-index: 1001;
+  }
+  
+  .navbar-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px 20px;
+    gap: 0;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    overflow-y: auto;
+  }
+  
+  .navbar-menu.active {
+    left: 0;
+  }
+  
+  .navbar-link {
+    width: 100%;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  
+  /* Hero Section Mobile */
+  .hero-section {
+    min-height: 100vh;
+    padding: 90px 0 40px;
+  }
+  
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0 15px;
+  }
+  
+  .hero-visual {
+    order: -1;
+    max-width: 100%;
+  }
+  
+  .hero-badge {
+    font-size: 12px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    text-shadow:
+      -1.5px -1.5px 0 #3bd2cb,  
+       1.5px -1.5px 0 #000,
+      -1.5px  1.5px 0 #000,
+       1.5px  1.5px 0 #ee1010;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto 28px;
+    max-width: 100%;
+    text-shadow:
+      -1px -1px 0 #011000,  
+       1px -1px 0 #6be67e,
+      -1px  1px 0 #010900,
+       1px  1px 0 #000300;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+  
+  .hero-card {
+    padding: 30px 24px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.4rem;
+  }
+  
+  .card-content p {
+    font-size: 1rem;
+  }
+  
+  /* Hide/Reduce decorative elements */
+  .floating-elements {
+    display: none;
+  }
+  
+  .scroll-indicator {
+    display: none;
+  }
+  
+  .particle {
+    opacity: 0.05;
+  }
+  
+  /* Stats Section */
+  .stats-section {
+    padding: 60px 0;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .stat-card {
+    padding: 30px 15px;
+  }
+  
+  .stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 80px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 50px;
+  }
+  
+  .section-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    padding: 0 15px;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .feature-card {
+    padding: 35px 25px;
+  }
+  
+  .feature-icon span {
+    font-size: 2.8rem;
+  }
+  
+  .icon-bg {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.4rem;
+  }
+  
+  .feature-card p {
+    font-size: 1rem;
+  }
+  
+  /* Faculties Section */
+  .faculties-section {
+    padding: 80px 0;
+  }
+  
+  .faculty-list {
+    margin-top: 50px;
+    gap: 20px;
+  }
+  
+  .faculty-card-content {
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .faculty-image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .faculty-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .faculty-info {
+    min-width: 100%;
+    text-align: center;
+  }
+  
+  .faculty-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .faculty-name-section {
+    text-align: center;
+  }
+  
+  .faculty-name {
+    font-size: 1.5rem;
+  }
+  
+  .faculty-designation {
+    font-size: 1rem;
+  }
+  
+  .faculty-specialization {
+    font-size: 0.9rem;
+    justify-content: center;
+  }
+  
+  .faculty-experience-badge {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .faculty-stats {
+    justify-content: center;
+  }
+  
+  .stat-badge {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .faculty-contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .faculty-cta {
+    margin-top: 50px;
+    padding: 40px 24px;
+  }
+  
+  .cta-title {
+    font-size: 1.8rem;
+  }
+  
+  .cta-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cta-button {
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 80px 0;
+  }
+  
+  .visual-placeholder {
+    padding: 50px 30px;
+  }
+  
+  .placeholder-icon {
+    font-size: 3.5rem !important;
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    padding: 80px 0;
+  }
+  
+  .content-placeholder {
+    padding: 30px 15px;
+  }
+  
+  .placeholder-box {
+    padding: 35px 20px;
+  }
+  
+  .placeholder-box.large {
+    padding: 45px 25px;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 50px 0 30px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    justify-content: center;
+  }
+  
+  .footer-placeholder {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .footer-placeholder .placeholder-text {
+    padding: 25px;
+  }
 }
 
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Hero adjustments */
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-card {
+    padding: 25px 20px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 24px;
+    font-size: 15px;
+    gap: 6px;
+  }
+  
+  .play-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Stats single column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-number {
+    font-size: 2.2rem;
+  }
+  
+  /* Sections */
+  .section-title {
+    font-size: 1.9rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .feature-card {
+    padding: 30px 20px;
+  }
+  
+  .faculty-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .faculty-name {
+    font-size: 1.3rem;
+  }
+  
+  .cta-title {
+    font-size: 1.5rem;
+  }
+  
+  .cta-subtitle {
+    font-size: 1rem;
+  }
+  
+  .navbar-link {
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
 
+/* Extra Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .logo-circle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .logo-inner {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .logo-img {
+    width: 36px;
+  }
+  
+  .website-name {
+    font-size: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.7rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .faculty-card-content {
+    padding: 20px;
+  }
+  
+  .faculty-image {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding: 80px 0 30px;
+  }
+  
+  .hero-container {
+    gap: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: auto;
+    min-width: 160px;
+    padding: 12px 24px;
+  }
+  
+  .navbar-menu {
+    overflow-y: auto;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES FOR RESPONSIVENESS
+   ======================================== */
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent horizontal overflow */
+* {
+  max-width: 100%;
+}
+
+.container,
+.hero-container,
+.navbar-container,
+.stats-grid,
+.features-grid,
+.faculty-list,
+.about-grid,
+.contact-grid {
+  overflow-x: hidden;
+}
+
+/* Touch-friendly tap targets on mobile */
+@media (max-width: 767px) {
+  button,
+  a,
+  .btn-primary,
+  .btn-secondary,
+  .navbar-link,
+  .contact-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

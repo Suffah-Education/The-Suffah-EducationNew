@@ -7,7 +7,7 @@ const StatsSection = () => {
   const stats = [
     { number: "10K+", label: "Students", icon: "👥" },
     { number: "500+", label: "Expert Faculty", icon: "👨‍🏫" },
-    { number: "50+", label: "Courses", icon: "📚" },
+    { number: "1000+", label: "Graduates", icon: "🧑‍🎓" },
     { number: "98%", label: "Success Rate", icon: "🎯" }
   ];
   

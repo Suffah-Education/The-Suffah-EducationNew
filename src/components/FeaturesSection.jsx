@@ -5,12 +5,12 @@ const FeaturesSection = () => {
   const [featuresRef, isVisible] = useIntersectionObserver();
   
   const features = [
-    { title: "تعلم القرآن", icon: "🤖", description: "Your personalized learning content goes here" },
-    { title: "تحفيظ القرآن", icon: "💻", description: "Engaging interactive class content here" },
-    { title: "تجويد القرآن", icon: "🎯", description: "Professional mentorship details here" },
-    { title: "Flexible Schedule", icon: "⏰", description: "Flexible timing information here" },
-    { title: "Global Community", icon: "🌍", description: "Community features description here" },
-    { title: "Career Support", icon: "🚀", description: "Career guidance content here" }
+    { title: "Memorizing Quran", icon: "🧠", description: "Your personalized learning content goes here" },
+    { title: "Academic Studies", icon: "📚", description: "Engaging interactive class content here" },
+    { title: "Facilities In Suffah", icon: "🎯", description: "Professional mentorship details here" },
+    { title: "Highly Qualified Staff Staff", icon: "👨🏻", description: "Flexible timing information here" },
+    { title: "The Suffah advantages", icon: "✅", description: "Community features description here" },
+    { title: "Life After Suffah", icon: "🌱", description: "Career guidance content here" }
   ];
   
   return (
