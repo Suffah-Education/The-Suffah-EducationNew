@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BookOpen, Code, Palette, Calculator, Globe, Microscope, Music, TrendingUp, Users, Award, Clock, Star, ChevronRight, Play, Download, MessageCircle } from 'lucide-react';
+import { image } from 'framer-motion/client';
 
 export default function OfferingsPage() {
   const [scrollY, setScrollY] = useState(0);
@@ -12,13 +14,18 @@ export default function OfferingsPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleEnrollNowClick = () => {
+    navigate("/Pages/Teacher SelectionPage");
+  };
+
   const categories = [
     { id: 'all', name: 'All Courses', icon: BookOpen },
-    { id: 'Basics', name: 'Basics', icon: Code },
-    { id: 'design', name: 'Design', icon: Palette },
-    { id: 'business', name: 'Business', icon: TrendingUp },
-    { id: 'science', name: 'Science', icon: Microscope },
-    { id: 'arts', name: 'Arts', icon: Music }
+    { id: 'Basics', name: 'Basics(بنیادی)', icon: Code },
+    { id: 'Intermediate', name: 'Intermediate(درمیانی)', icon: Palette },
+    { id: 'Advance', name: 'Advance(پیشگی)', icon: TrendingUp },
+    
   ];
 
   const courses = [
@@ -38,81 +45,58 @@ export default function OfferingsPage() {
     },
     {
       id: 2,
-      title: 'UI/UX Design Masterclass',
-      category: 'design',
+      image:"/public/images/Nazera.png",
+      title: 'Qur’an Nāẕera (قرآنِ ناظرہ)',
+      category: 'Intermediate',
       price: '$89',
       duration: '10 weeks',
       students: '12,891',
       rating: 4.8,
-      level: 'Beginner',
-      description: 'Learn Figma, design systems, user research, and create stunning interfaces',
-      features: ['Portfolio Projects', 'Design Tools', 'Mentorship', 'Job Ready'],
+      level: 'Intermediate',
+      description: 'Learn Qirat, Vocal Symbols, Stopage and Completion symbols, and more',
+      features: ['Expert Guidance', 'Proper Mentorship', 'Personal Attention', 'Certificate'],
       color: 'from-purple-500 to-pink-500'
     },
     {
       id: 3,
-      title: 'Data Science & AI',
-      category: 'tech',
+      image:"/public/images/hq720.jpg",
+      title: 'Tajwed-e-Quran(تجویدِ قرآن)',
+      category: 'Intermediate',
       price: '$129',
       duration: '16 weeks',
       students: '18,432',
       rating: 4.9,
       level: 'Advanced',
-      description: 'Python, Machine Learning, Deep Learning, and AI applications',
-      features: ['Real Datasets', 'GPU Access', 'Research Papers', 'Expert Review'],
+      description: 'Knowledge of the articulation points of the letters (مخرج), Knowledge of the characteristics of the letters (صفت),Knowledge of the common mistakes (اختہ) ',
+      features: ['Mentorship', 'Personal Attention', 'Certification', 'Expert Review'],
       color: 'from-green-500 to-teal-500'
     },
     {
       id: 4,
-      title: 'Digital Marketing Pro',
-      category: 'business',
+      image:"/public/images/hifz-e-quran.jpg",
+      title: 'Hifz-e-Quran(حفظ قرآن)',
+      category: 'Advance',
       price: '$79',
       duration: '8 weeks',
       students: '9,876',
       rating: 4.7,
       level: 'Beginner',
-      description: 'SEO, Social Media, Content Marketing, and Analytics mastery',
-      features: ['Live Campaigns', 'Tools Access', 'Case Studies', 'Certification'],
+      description: 'Memorization techniques(حفظ کی تکنیک), Proper recitation (تجوید), Revision (نظر ثانی),Assessment(تشخیص) ',
+      features: ['Live Doubt session', 'Personal Attentions', 'Expert guidance', 'Certification'],
       color: 'from-orange-500 to-red-500'
     },
-    {
-      id: 5,
-      title: 'Quantum Physics Fundamentals',
-      category: 'science',
-      price: '$95',
-      duration: '14 weeks',
-      students: '5,432',
-      rating: 4.8,
-      level: 'Advanced',
-      description: 'Explore quantum mechanics, wave functions, and modern physics',
-      features: ['Simulations', 'Lab Access', 'Research Path', 'Expert Forums'],
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      id: 6,
-      title: 'Music Production & Theory',
-      category: 'arts',
-      price: '$85',
-      duration: '10 weeks',
-      students: '7,234',
-      rating: 4.9,
-      level: 'Intermediate',
-      description: 'DAW mastery, sound design, mixing, and music composition',
-      features: ['Software Included', 'Studio Time', 'Collaboration', 'Release Guide'],
-      color: 'from-pink-500 to-rose-500'
-    }
   ];
 
   const tools = [
     {
-      name: 'Interactive Code Labs',
-      description: 'Practice coding in real-time with instant feedback',
+      name: 'Interactive Live sessionS',
+      description: 'Learn in real-time with instant feedback',
       icon: Code,
       color: 'bg-blue-500'
     },
     {
-      name: 'AI-Powered Tutor',
-      description: 'Get personalized help 24/7 from our AI assistant',
+      name: 'Expert Tutor',
+      description: 'Get personalized help 24/7 from our Our E',
       icon: MessageCircle,
       color: 'bg-purple-500'
     },
@@ -329,7 +313,10 @@ export default function OfferingsPage() {
                       </div>
                       <div className="text-xs text-gray-500">one-time payment</div>
                     </div>
-                    <button className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300">
+                    
+                    <button
+                     onClick={handleEnrollNowClick}
+                     className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300">
                       Enroll Now
                     </button>
                   </div>

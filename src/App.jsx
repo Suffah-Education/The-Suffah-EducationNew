@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import TopBanner from './components/TopBanner';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -14,10 +15,14 @@ import AdminDashboard from './components/DashBoards/Admin Dashboard';
 import TeacherDashboard from './components/DashBoards/Teacher Dashboard';
 import apiService from './services/authService';
 import OfferingsPage from './Pages/Offerings';
+import LoginPage from './Pages/LoginPage';
+import TeacherSelectionPage from './Pages/Teacher SelectionPage';
+import HomePage from './Pages/HomePage';
 
 const App = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+    console.log("✅ TopBanner Rendered");
 
   useEffect(() => {
     // Fetch JSON file from public folder
@@ -50,13 +55,18 @@ const App = () => {
   return (
     
       <div className="App">
+        <TopBanner />
         <Navbar />
         <Routes>
           {/* Home Route */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="Pages/HomePage" element={<HomePage />} />
           
           {/* Offerings Route */}
           <Route path="Pages/offerings" element={<OfferingsPage />} />
+            {/* Login Route */}
+          <Route path="Pages/LoginPage" element={<LoginPage />} />
+          <Route path="Pages/Teacher SelectionPage" element={<TeacherSelectionPage />} />
+
 
           {/* Redirect unknown routes to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
