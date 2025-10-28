@@ -8,8 +8,7 @@ const TopBanner = () => {
         fontSize: "clamp(14px, 2.5vw, 28px)", // auto-adjusts font size
         lineHeight: "1.2",
         textAlign: "center",
-        whiteSpace: "nowrap", // keeps it in one line
-         transform: "translateY(-15px)",
+        whiteSpace: "nowrap" // keeps it in one line
       }}
     >
       🌟 تم میں سب سے بہتر وہ ہے جو قرآن کو سیکھے اور سیکھاۓ 🌟

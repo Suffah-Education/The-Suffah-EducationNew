@@ -30,180 +30,9 @@ body {
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 4000px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-/* ========================================
-   NAVBAR - DESKTOP
-   ======================================== */
-
-.navbar {
-  position: fixed;
-  top: 40px; /* same as .top-banner height */
-  width: 100%;
-  height: 80px;
-  z-index: 1000;
-  background: rgba(254, 254, 253, 0.1);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
-}
-
-
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-container {
-  max-width: 1400px;
-  background-color: rgba(254, 253, 251, 0.1);
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  position: relative;
-}
-
-.logo-circle {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #56e6ed 0%, #6788f6 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  animation: logoFloat 3s ease-in-out infinite;
-}
-
-.logo-inner {
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  animation: logoInnerSpin 4s linear infinite;
-}
-
-.logo-img {
-  width: 50px;
-  height: auto;
-  display: block;
-}
-
-.website-name {
-  font-size: clamp(24px, 6vw, 46px); /* min 24px, preferred 6% of viewport, max 46px */
-  font-weight: 700;
-  background: linear-gradient(135deg, #fdffff, #fffeff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.5px;
-  -webkit-text-stroke: 1px black;
-}
-
-
-.navbar-menu {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.navbar-link {
-  text-decoration: none;
-  color: #4a5568;
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.navbar-link span {
-  position: relative;
-  z-index: 2;
-}
-
-.navbar-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #6ed7f4, #678ef1);
-  transition: left 0.3s ease;
-  z-index: 1;
-}
-
-.navbar-link:hover::before,
-.navbar-link.active::before {
-  left: 0;
-}
-
-.navbar-link:hover span,
-.navbar-link.active span {
-  color: rgb(249, 231, 70);
-}
-
-.mobile-menu-btn {
-  display: none;
-  cursor: pointer;
-  padding: 5px;
-  background: none;
-  border: none;
-}
-
-.hamburger {
-  width: 30px;
-  height: 24px;
-  position: relative;
-}
-
-.hamburger span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: #070909;
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-.hamburger span:nth-child(3) { bottom: 0; }
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 50%;
-  margin-top: -1.5px;
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  bottom: 50%;
-  margin-bottom: -1.5px;
 }
 
 /* ========================================
@@ -215,6 +44,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  margin-top: 64px;
   overflow: hidden;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
@@ -1828,7 +1658,7 @@ img {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 40px; /* you can adjust this height */
+  height: 40px;
   background: linear-gradient(90deg, #06b6d4, #3b82f6);
   color: white;
   display: flex;
@@ -1836,7 +1666,7 @@ img {
   justify-content: center;
   font-size: 15px;
   font-weight: 600;
-  z-index: 1100; /* higher than navbar */
+  z-index: 1500; /* Always above everything */
 }
 
 

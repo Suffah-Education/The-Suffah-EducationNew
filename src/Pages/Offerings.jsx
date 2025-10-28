@@ -31,7 +31,7 @@ export default function OfferingsPage() {
   const courses = [
     {
       id: 1,
-      image:"/public/images/Basic-Qaida-Your-Gateway-to-the-Quran.webp",
+  image:"/images/Basic-Qaida-Your-Gateway-to-the-Quran.webp",
       title: 'Basic Qaida Learning(بنیادی قاعدہ سیکھنا)',
       category: 'Basics',
       price: '$25/Month',
@@ -45,7 +45,7 @@ export default function OfferingsPage() {
     },
     {
       id: 2,
-      image:"/public/images/Nazera.png",
+  image:"/images/Nazera.png",
       title: 'Qur’an Nāẕera (قرآنِ ناظرہ)',
       category: 'Intermediate',
       price: '$89',
@@ -59,7 +59,7 @@ export default function OfferingsPage() {
     },
     {
       id: 3,
-      image:"/public/images/hq720.jpg",
+  image:"/images/hq720.jpg",
       title: 'Tajwed-e-Quran(تجویدِ قرآن)',
       category: 'Intermediate',
       price: '$129',
@@ -73,7 +73,7 @@ export default function OfferingsPage() {
     },
     {
       id: 4,
-      image:"/public/images/hifz-e-quran.jpg",
+  image:"/images/hifz-e-quran.jpg",
       title: 'Hifz-e-Quran(حفظ قرآن)',
       category: 'Advance',
       price: '$79',

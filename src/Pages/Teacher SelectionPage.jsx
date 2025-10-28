@@ -15,7 +15,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 1,
       name: "Hafiz Sayyed Mohammad Musaib",
       designation: "Aalim",
-      image: "/public/images/musaib(1).jpg",
+      image: "/images/musaib(1).jpg",
       experience: "8 years",
       email: "mohammad.Musaib@institute.suffah",
       rating: 4,
@@ -30,7 +30,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 2,
       name: "Hafiz Musaddik khan Pathan",
       designation: "Hafiz, Aalim, Mufti",
-      image: "/public/images/musaddik.jpeg",
+      image: "/images/musaddik.jpeg",
       experience: "5 years",
       email: "Musaddik.Khan@institute.Suffah",
       rating: 5,
@@ -45,7 +45,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 3,
       name: "Hafiz Muzamil khan Pathan",
       designation: "Aalim, Hafiz",
-      image: "/public/images/muzammil.jpeg",
+      image: "/images/muzammil.jpeg",
       experience: "4 years",
       email: "Muzamil.Khan@institute.Suffah",
       rating: 4,
@@ -60,7 +60,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 4,
       name: "Hafiz Pathan Mudassir khan",
       designation: "Aalim, Hafiz",
-      image: "/public/images/mudassir.jpeg",
+      image: "/images/mudassir.jpeg",
       experience: "5 years",
       email: "Mudassir.Khan@institute.Suffah",
       rating: 4,
@@ -75,7 +75,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 5,
       name: "Syed Muhsin syed Yusuf",
       designation: "Aalim",
-      image: "/public/images/muhsin.jpeg",
+      image: "/images/muhsin.jpeg",
       experience: "6 years",
       email: "Syed.Syed@institute.Suffah",
       rating: 4,
@@ -90,7 +90,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 6,
       name: "Sayyed Ayesha Fatema",
       designation: "Hafiza, Aalima",
-      image: "/public/images/F1.webp",
+      image: "/images/F1.webp",
       experience: "12 years",
       email: "Ayesha.Sayyed@institute.Suffah",
       rating: 4,
@@ -105,7 +105,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 7,
       name: "Momin Khatija Ayyub",
       designation: "Aalima",
-      image: "/public/images/F1.webp",
+      image: "/images/F1.webp",
       experience: "20 years",
       email: "Khatija.momin@institute.edu",
       rating: 4,
@@ -120,7 +120,7 @@ export default function TeacherSelectionPage({ courseData = null }) {
       id: 8,
       name: "Maulana A. Rashid Alamgiri",
       designation: "Hafiz, Aalim",
-      image: "/public/images/Rashid.jpeg",
+      image: "/images/Rashid.jpeg",
       experience: "15 years",
       email: "Rashid.Alamgir@institute.suffah",
       rating: 5,
@@ -165,9 +165,9 @@ export default function TeacherSelectionPage({ courseData = null }) {
 
   const filteredTeachers = faculties.filter(teacher => {
     const matchesSearch = teacher.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         teacher.specialization.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = filterSpecialization === 'all' || 
-                         teacher.specialization.toLowerCase().includes(filterSpecialization.toLowerCase());
+      teacher.specialization.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesFilter = filterSpecialization === 'all' ||
+      teacher.specialization.toLowerCase().includes(filterSpecialization.toLowerCase());
     return matchesSearch && matchesFilter;
   });
 
@@ -178,8 +178,8 @@ export default function TeacherSelectionPage({ courseData = null }) {
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (
-      <Star 
-        key={i} 
+      <Star
+        key={i}
         className={`w-4 h-4 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-600'}`}
       />
     ));
@@ -217,9 +217,8 @@ export default function TeacherSelectionPage({ courseData = null }) {
                 height: Math.random() * 200 + 100 + 'px',
                 left: Math.random() * 100 + '%',
                 top: Math.random() * 100 + '%',
-                background: `radial-gradient(circle, ${
-                  ['#3b82f6', '#8b5cf6', '#ec4899'][Math.floor(Math.random() * 3)]
-                } 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${['#3b82f6', '#8b5cf6', '#ec4899'][Math.floor(Math.random() * 3)]
+                  } 0%, transparent 70%)`,
                 animationDelay: Math.random() * 3 + 's'
               }}
             />
@@ -280,13 +279,13 @@ export default function TeacherSelectionPage({ courseData = null }) {
             >
               {/* Teacher Image */}
               <div className="relative h-100 bg-gradient-to-br from-purple-600 to-cyan-600 overflow-hidden">
-                <img 
-                  src={teacher.image} 
+                <img
+                  src={teacher.image}
                   alt={teacher.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-                
+
                 {/* Rating Badge */}
                 <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30">
                   {renderStars(teacher.rating)}
@@ -390,8 +389,8 @@ export default function TeacherSelectionPage({ courseData = null }) {
 
             <div className="text-center mb-6">
               <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 p-1">
-                <img 
-                  src={selectedTeacher.image} 
+                <img
+                  src={selectedTeacher.image}
                   alt={selectedTeacher.name}
                   className="w-full h-full rounded-full object-cover"
                 />

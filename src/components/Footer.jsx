@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Footer = () => {
+  // Assuming the main.css file has the centering rule for .container:
+  // .container { max-width: 1600px; margin: 0 auto; padding: 0 20px; }
   return (
     <footer className="footer">
       <div className="container">
