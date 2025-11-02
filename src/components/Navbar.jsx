@@ -15,8 +15,8 @@ const Navbar = () => {
 
 
   const navLinks = [
-    { name: 'Home', link: 'home', path: '/Pages/HomePage' },
-    { name: 'Offerings', link: 'offerings', path: '/Pages/offerings' },
+    { name: 'Home', link: 'home', path: '#hero' },
+    { name: 'Courses', link: 'offerings', path: '/Pages/offerings' },
     { name: 'Faculties', link: 'faculties', path: '#faculties' },
     { name: 'Services', link: 'services', path: '#services' },
     { name: 'About', link: 'about', path: '#about' },
@@ -41,7 +41,7 @@ const Navbar = () => {
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
           } else {
-            navigate('/Pages/HomePage');
+            navigate('/');
             setTimeout(() => {
               document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
             }, 200);
@@ -53,10 +53,20 @@ const Navbar = () => {
     }
   };
 
-  const handleLoginClick = () => {
-    navigate('/Pages/LoginPage');
-    setMenuOpen(false);
-  };
+
+
+  const handleLoginClick = ({ signup = false } = {}) => {
+  const DASHBOARD_BASE = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:5173';
+  // optional return-to so dashboard can send user back after auth
+  const returnTo = encodeURIComponent(window.location.href);
+  const path = signup ? '/signup' : '/login';
+  const target = `${DASHBOARD_BASE.replace(/\/$/, '')}${path}?return_to=${returnTo}`;
+
+  window.open(target, '_blank', 'noopener,noreferrer');
+  setMenuOpen(false);
+};
+
+
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -88,7 +98,7 @@ const Navbar = () => {
 
             <li>
               <button className="login-btn-desktop" onClick={handleLoginClick}>
-                Login
+                Register
               </button>
             </li>
           </ul>

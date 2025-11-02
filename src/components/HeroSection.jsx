@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const images = [
   "/images/hero1.png",
@@ -11,6 +12,7 @@ const images = [
 
 const HeroSection = () => {
   const scrollY = useScrollAnimation();
+  const navigate = useNavigate();
   const [heroRef, isVisible] = useIntersectionObserver();
   const [currentImage, setCurrentImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -75,7 +77,7 @@ const HeroSection = () => {
             personalized care
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">
+            <button className="btn-primary" onClick={() => navigate('/Pages/LoginPage')}>
               <span>Start Learning</span>
               <div className="btn-shine"></div>
             </button>
