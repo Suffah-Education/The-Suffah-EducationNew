@@ -24,7 +24,17 @@ const Footer = () => {
             <li>FAQs</li>
             <li>Refund and Cancellation Policy</li>
             <li>Privacy Policy</li>
-            <li>Terms and Conditions</li>
+            <li>
+              <a
+                href="https://sites.google.com/view/suffahtermsandconditons/home"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                Terms and Conditions
+              </a>
+            </li>
+
           </ul>
         </div>
 

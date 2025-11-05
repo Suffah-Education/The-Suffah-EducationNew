@@ -56,7 +56,7 @@ const Navbar = () => {
 
 
   const handleLoginClick = ({ signup = false } = {}) => {
-  const DASHBOARD_BASE = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:5173';
+  const DASHBOARD_BASE = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:5174';
   // optional return-to so dashboard can send user back after auth
   const returnTo = encodeURIComponent(window.location.href);
   const path = signup ? '/signup' : '/login';

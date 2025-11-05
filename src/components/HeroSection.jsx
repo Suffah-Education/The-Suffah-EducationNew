@@ -72,7 +72,7 @@ const HeroSection = () => {
             <span className="title-line">Transform Your</span>
             <span className="title-line gradient-text">Learning Journey</span>
           </h1>
-          <p className="hero-subtitle">
+          <p className="hero-card floating">
             Experience world-class education with cutting-edge technology and
             personalized care
           </p>

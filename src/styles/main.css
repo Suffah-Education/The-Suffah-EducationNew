@@ -100,6 +100,7 @@ body {
 
 .hero-content.animate .hero-subtitle {
   animation: slideInUp 0.8s ease-out 0.6s both;
+
 }
 
 .hero-content.animate .hero-buttons {
@@ -121,7 +122,7 @@ body {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 24px;
@@ -148,14 +149,16 @@ body {
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: #fafbfd;
+  /* color: #fafbfd; */
+  color: black;
   margin-bottom: 40px;
+  font-family: 'Times New Roman', Times, serif;
   max-width: 500px;
-  text-shadow:
-    -2px -2px 0 #011000,  
+  /* text-shadow: */
+    /* -2px -2px 0 #011000,  
      2px -2px 0 #6be67e,
     -2px  2px 0 #010900,
-     2px  2px 0 #000300;
+     2px  2px 0 #000300; */
 }
 
 .hero-buttons {
@@ -231,13 +234,15 @@ body {
 
 .hero-card {
   background: rgba(255, 255, 255, 0.9);
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(113, 196, 137, 0.2);
   position: relative;
+  margin: 15px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .hero-card img {
@@ -274,7 +279,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 70%;
   height: 100%;
   pointer-events: none;
 }
