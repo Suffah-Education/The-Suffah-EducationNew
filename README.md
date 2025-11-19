@@ -1,6 +1,6 @@
 Suffah Education project 
-k Islamic e-learning platform bana rahe ho jisme students aur teachers 
-(Maulana, Hafiz, Qayed, Quran etc.) dono login kar sakte hain, aur admin sab 
+k Islamic e-learning platform bana rahe hai jisme students aur teachers 
+(Maulana, Hafiz, Qayeda, Quran etc.) dono login kar sakte hain, aur admin sab 
 manage karega. 
 �
 �
