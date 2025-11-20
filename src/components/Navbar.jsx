@@ -1,27 +1,32 @@
-// src/components/Navbar.jsx
-import React, { useState, useEffect } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import useScrollAnimation from '../hooks/useScrollAnimation';
-import '../styles/Components/navbar.css';
+import useScrollAnimation from "../hooks/useScrollAnimation";
+import { useTranslation } from "react-i18next";   // <-- ADD
+import "../styles/Components/navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState("home");
   const scrollY = useScrollAnimation();
 
+  const { t, i18n } = useTranslation(); // <-- ADD
 
   const navLinks = [
-    { name: 'Home', link: 'home', path: '#hero' },
-    { name: 'Courses', link: 'offerings', path: '/Pages/offerings' },
-    { name: 'Faculties', link: 'faculties', path: '#faculties' },
-    { name: 'Services', link: 'services', path: '#services' },
-    { name: 'About', link: 'about', path: '#about' },
-    { name: 'Contact', link: 'contact', path: '#contact' },
+    { name: t("home"), link: "home", path: "#hero" },
+    { name: t("courses"), link: "offerings", path: "/Pages/offerings" },
+    { name: t("faculties"), link: "faculties", path: "#faculties" },
+    { name: t("services"), link: "services", path: "#services" },
+    { name: t("about"), link: "about", path: "#about" },
+    { name: t("contact"), link: "contact", path: "#contact" },
   ];
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === "en" ? "ur" : "en");
+  };
 
   useEffect(() => {
     setIsScrolled(scrollY > 50);
@@ -34,16 +39,18 @@ const Navbar = () => {
     setMenuOpen(false);
 
     if (path) {
-      if (path.startsWith('#')) {
+      if (path.startsWith("#")) {
         setTimeout(() => {
           const targetId = path.substring(1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+            targetElement.scrollIntoView({ behavior: "smooth" });
           } else {
-            navigate('/');
+            navigate("/");
             setTimeout(() => {
-              document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById(targetId)?.scrollIntoView({
+                behavior: "smooth",
+              });
             }, 200);
           }
         }, 100);
@@ -53,30 +60,48 @@ const Navbar = () => {
     }
   };
 
-
-
   const handleLoginClick = ({ signup = false } = {}) => {
-  const DASHBOARD_BASE = import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:5174';
-  // optional return-to so dashboard can send user back after auth
-  const returnTo = encodeURIComponent(window.location.href);
-  const path = signup ? '/signup' : '/login';
-  const target = `${DASHBOARD_BASE.replace(/\/$/, '')}${path}?return_to=${returnTo}`;
-
-  window.open(target, '_blank', 'noopener,noreferrer');
-  setMenuOpen(false);
-};
-
-
+    const DASHBOARD_BASE =
+      import.meta.env.VITE_DASHBOARD_URL || "http://localhost:5174";
+    const returnTo = encodeURIComponent(window.location.href);
+    const path = signup ? "/signup" : "/login";
+    const target = `${DASHBOARD_BASE.replace(/\/$/, "")}${path}?return_to=${returnTo}`;
+    window.open(target, "_blank", "noopener,noreferrer");
+    setMenuOpen(false);
+  };
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header
+      className={`header ${isScrolled ? "scrolled" : ""}`}
+      dir={i18n.language === "ur" ? "rtl" : "ltr"} // <-- RTL auto apply
+    >
+      {/* Logo style block as is */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+        .logo {
+          display: flex;
+          align-items: center;
+          font-family: 'Playfair Display', serif;
+          font-weight: 600;
+          font-size: 22px;
+          color: #1a1a1a;
+          letter-spacing: 0.5px;
+          gap: 8px;
+          cursor: pointer;
+          transition: color 0.3s ease;
+        }
+        .logo-img { height: 40px; width: auto; }
+        .logo:hover { color: #007bff; }
+        @media (max-width: 768px) {
+          .logo { font-size: 18px; }
+        }
+      `}</style>
+
       <nav className="nav-wrapper">
         <div className="content">
-          <NavLink to="/Pages/HomePage" className="logo" onClick={() => setActiveLink('home')}>
-            <div className='logo'>
-              <img src="/images/Logo.png" className='logo-img' />
-              𝕿𝖍𝖊 𝕾𝖚𝖋𝖋𝖆𝖍  𝕰𝖉𝖚𝖈𝖆𝖙𝖎𝖔𝖓
-            </div>
+          <NavLink to="/" className="logo" onClick={() => setActiveLink("home")}>
+            <img src="/images/Logo.png" alt="Logo" className="logo-img" />
+            <span>The Suffah Education</span>
           </NavLink>
 
           {/* Desktop Menu */}
@@ -85,7 +110,9 @@ const Navbar = () => {
               <li key={item.link}>
                 <a
                   href={item.path}
-                  className={`menuitem ${activeLink === item.link ? 'active' : ''}`}
+                  className={`menuitem ${
+                    activeLink === item.link ? "active" : ""
+                  }`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(item.link, item.path);
@@ -98,31 +125,38 @@ const Navbar = () => {
 
             <li>
               <button className="login-btn-desktop" onClick={handleLoginClick}>
-                Register
+                {t("register")}
+              </button>
+            </li>
+
+            {/* 🌙 Language Button */}
+            <li>
+              <button
+                onClick={toggleLanguage}
+                className="login-btn-desktop"
+                style={{ marginLeft: "12px" }}
+              >
+                {i18n.language === "en" ? "اردو" : "English"}
               </button>
             </li>
           </ul>
 
-          <button className='menu-btn' onClick={toggleMenu} aria-label="Toggle menu">
-            {menuOpen ? (
-
-              <IoClose className="icon-style" />
-            ) : (
-
-              <GiHamburgerMenu className="h-6 w-6 text-gray-800 transition-all duration-300" />
-            )}
+          <button className="menu-btn" onClick={toggleMenu}>
+            {menuOpen ? <IoClose className="icon-style" /> : <GiHamburgerMenu />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`}>
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <ul className="mobile-menu-list">
           {navLinks.map((item) => (
             <li key={item.link}>
               <a
                 href={item.path}
-                className={`mobile-menu-item ${activeLink === item.link ? 'active' : ''}`}
+                className={`mobile-menu-item ${
+                  activeLink === item.link ? "active" : ""
+                }`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick(item.link, item.path);
@@ -132,15 +166,23 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+
           <li>
             <button className="login-btn-mobile" onClick={handleLoginClick}>
-              Start Learning
+              {t("startLearning")}
+            </button>
+          </li>
+
+          {/* Mobile language button */}
+          <li>
+            <button className="login-btn-mobile" onClick={toggleLanguage}>
+              {i18n.language === "en" ? "اردو" : "English"}
             </button>
           </li>
         </ul>
       </div>
     </header>
   );
-}
+};
 
 export default Navbar;

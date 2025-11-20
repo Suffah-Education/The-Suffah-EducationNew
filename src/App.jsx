@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./styles/main.css";
+
+import "./i18n";  // ✅ ONLY THIS — Perfect!
 
 import TopBanner from "./components/TopBanner";
 import Navbar from "./components/Navbar";
@@ -13,17 +15,12 @@ import FeaturesSection from "./components/FeaturesSection";
 import FacultiesSection from "./components/FacultiesSection";
 import AboutSection from "./components/AboutSection";
 import ContactSection from "./components/ContactSection";
-
+import AllTeachers from "./components/AllTeachers";
 import OfferingsPage from "./Pages/Offerings";
-// import TeacherSelectionPage from "./Pages/Teacher SelectionPage";
-// import LoginPage from "./Pages/LoginPage";
-// import SignupPage from "./Pages/SignupPage";
-
-// import AdminDashboard from "./components/DashBoards/Admin Dashboard";
-// import TeacherDashboard from "./components/DashBoards/TeacherDashboard";
-// import StudentDashboard from "./components/DashBoards/StudentDashboard";
+import ContactForm from "./components/ContactForm";
 
 function App() {
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -43,39 +40,31 @@ function App() {
   if (loading) return <Loader />;
 
   return (
-      <>
-        <TopBanner />
-        <Navbar />
-        <Routes>
-          {/* 🏠 Home Page (All sections shown together) */}
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSection data={data?.hero} />
-                <StatsSection data={data?.stats} />
-                <FeaturesSection data={data?.features} />
-                <FacultiesSection data={data?.faculties} />
-                <AboutSection data={data?.about} />
-                <ContactSection data={data?.contact} />
-                <Footer />
-              </>
-            }
-          />
+    <>
+      <TopBanner />
+      <Navbar />
 
-          {/* 🧾 Other Pages */}
-          <Route path="/Pages/offerings" element={<OfferingsPage />} />
-          {/* <Route path="/teacher-selection" element={<TeacherSelectionPage />} /> */}
-          {/* <Route path="/Pages/LoginPage" element={<LoginPage />} /> */}
-          {/* <Route path="/pages/SignupPage" element={<SignupPage />} /> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <HeroSection data={data?.hero} />
+              <StatsSection data={data?.stats} />
+              <FeaturesSection data={data?.features} />
+              <FacultiesSection data={data?.faculties} />
+              <AboutSection data={data?.about} />
+              <ContactSection data={data?.contact} />
+              <Footer />
+            </>
+          }
+        />
 
-          {/* 🎓 Dashboards */}
-          {/* <Route path="/admin" element={<AdminDashboard />} /> */}
-          {/* <Route path="/teacher" element={<TeacherDashboard />} />
-          <Route path="/student" element={<StudentDashboard />} /> */}
-        </Routes>
-      </>
-
+        <Route path="/Pages/offerings" element={<OfferingsPage />} />
+        <Route path="/all-teachers" element={<AllTeachers />} />
+        <Route path="/ContactForm" element={<ContactForm />} />
+      </Routes>
+    </>
   );
 }
 
