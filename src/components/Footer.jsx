@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -9,9 +9,14 @@ import {
   FaEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6"; // ✅ New X logo import
+import { FaXTwitter } from "react-icons/fa6";
+import PrivacyModal from "./PrivacyModal";
+import TermsModal from "./TermsModal";
 
 const Footer = () => {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+
   return (
     <>
       <style>{`
@@ -58,6 +63,8 @@ const Footer = () => {
         /* Hover only for QUICK LINKS and SOCIAL LINKS */
         .footer-links-section .footer-link:hover,
         .footer-links-section .footer-link:focus,
+        .footer-links-section button.footer-link:hover,
+        .footer-links-section button.footer-link:focus,
         .social-icons a:hover {
           color: #00bfff; /* sky blue */
           text-decoration: none;
@@ -129,12 +136,11 @@ const Footer = () => {
           <div className="footer-col footer-links-section">
             <h4>QUICK LINKS</h4>
             <ul>
-              <li><Link to="/about" className="footer-link">About Us</Link></li>
-              <li><Link to="/careers" className="footer-link">Careers</Link></li>
-              <li><Link to="/faqs" className="footer-link">FAQs</Link></li>
-              <li><Link to="/refund-policy" className="footer-link">Refund and Cancellation Policy</Link></li>
-              <li><Link to="/PrivacyPolicy" className="footer-link">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="footer-link">Terms and Conditions</Link></li>
+              <li><Link to="/" className="footer-link">Home</Link></li>
+              <li><Link to="/all-teachers" className="footer-link">All Teachers</Link></li>
+              <li><Link to="/Pages/offerings" className="footer-link">Offerings</Link></li>
+              <li><button onClick={() => setPrivacyOpen(true)} className="footer-link cursor-pointer" style={{background: 'none', border: 'none', padding: '0', font: 'inherit'}}>Privacy Policy</button></li>
+              <li><button onClick={() => setTermsOpen(true)} className="footer-link cursor-pointer" style={{background: 'none', border: 'none', padding: '0', font: 'inherit'}}>Terms and Conditions</button></li>
             </ul>
           </div>
 
@@ -207,6 +213,15 @@ const Footer = () => {
           </p>
         </div>
       </footer>
+
+      {/* MODALS */}
+      <PrivacyModal isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsModal isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
+
+      {/* Hide body scroll when modal is open */}
+      <style>{`
+        ${privacyOpen || termsOpen ? 'body { overflow: hidden; }' : ''}
+      `}</style>
     </>
   );
 };

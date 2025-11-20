@@ -74,6 +74,9 @@ const Navbar = () => {
     <header
       className={`header ${isScrolled ? "scrolled" : ""}`}
       dir={i18n.language === "ur" ? "rtl" : "ltr"} // <-- RTL auto apply
+      style={{
+        zIndex: 30,
+      }}
     >
       {/* Logo style block as is */}
       <style>{`
