@@ -26,6 +26,67 @@ const AllTeachers = () => {
       ],
       image: "/images/musaddik.jpeg",
     },
+    {
+      name: "Hafiz Muzamil khan Pathan",
+      designation: " Aalim, Hafiz",
+      experience: "4 years",
+      specialization: "Qaida, Nazera",
+      graduated: 46,
+      achievements: [
+        "40 students completed Qaida",
+        "6 students completed Quran",
+      ],
+      image: "/images/muzammil.jpeg",
+    },
+     {
+      name: "Hafiz Pathan Mudassir  khan ",
+      designation: "Aalim,hafiz",
+      experience: "5 years",
+      specialization: "Qaida, Nazera",
+      graduated: 50,
+      achievements: [
+        "40 students completed Qaida",
+        "10 students completed Quran",
+      ],
+      image: "/images/mudassir.jpeg",
+    },
+     {
+      name: "Syed Muhsin syed Yusuf",
+      designation: " Aalim",
+      experience: "6 years",
+      specialization: "Qaida, Nazera",
+      graduated: 130,
+      achievements: [
+        "80 students completed Qaida",
+        "50 students completed Quran",
+      ],
+      image: "/images/muhsin.jpeg",
+    },
+     {
+      name: "Maulana A. Rashid Alamgiri",
+      designation: " Aalim, Hafiz",
+      experience: "15 years",
+      specialization: "Qaida, Nazera",
+      graduated: 500,
+      achievements: [
+        "500 students completed Qaida and Nazera", 
+        
+      ],
+      image: "/images/Rashid.jpeg",
+    },
+    {
+      name: "sayyed Ayesha fatema",
+      designation: " Aalima, Hafiza",
+      experience: "12 years",
+      specialization: "Qaida, Nazera",
+      graduated: 290,
+      achievements: [
+        "210 students completed Qaida ",
+        "80 students completed Quran ",  
+        
+      ],
+      image: "/images/F1.webp",
+    },
     // ...baaki teachers yahan add kar lo
   ];
 
